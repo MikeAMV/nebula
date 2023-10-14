@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: knodeapp
+  template:
+    metadata:
+      labels:
+        app: knodeapp
+    spec:
+      containers:
+        - name: knodeapp
+          image: erielit/devops:<IMAGE_TAG>
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: knodeapp-service
+spec:
+  type: ClusterIP
+  selector:
+    app: knodeapp
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: knodeapp-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - knodeapp.erielit.molcajete.dev
+    secretName: letsencrypt-nginx
+  rules:
+  - host: knodeapp.erielit.molcajete.dev
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: knodeapp-service
+              port:
+                number: 3000
