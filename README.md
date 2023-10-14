@@ -1,69 +1,36 @@
-## Nebula
-### Nebula is a lightweight (1kb compressed) JavaScript library that creates beautiful universe and sky animations.
-Including configurable Stars, Nebulas, Comets, Planets and Suns.  
-Nebula comes with a vanilla JS and a React wrapper.  
-Compatible with SSR
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<a href="https://nebula-demo.vercel.app/">
-    <img src="https://raw.githubusercontent.com/flodlc/nebula/master/demo_image.jpg" />
-</a>
-<a href="https://nebula-demo.vercel.app/">Demo page</a>
+## Getting Started
 
-### `Installation`
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-npm install @flodlc/nebula
-```
 
-### `usage`
-#### `Vanilla JS`
-```javascript
-import { createNebula } from "@flodlc/nebula";
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-<div id="nebula-element"></div>
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-const element = document.getElementById("nebula-element");
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-const nebula = createNebula(element, {
-    starsCount: 250,
-    starsRotationSpeed: 3,
-    nebulasIntensity: 8,
-    ...
-});
-// ... if needed:
-nebula.destroy()
- ```
+## Learn More
 
-#### `React`
- ```javascript
-import { ReactNebula } from "@flodlc/nebula";
+To learn more about Next.js, take a look at the following resources:
 
-export default App = () => {
-    return (
-        <>
-            // With default config
-            <ReactNebula/>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-            // With custom config
-            <ReactNebula config={{
-                starsCount: 250,
-                starsRotationSpeed: 3,
-                nebulasIntensity: 8,
-                ...
-            }}/>
-        </>
-    );
-}
- ```
-The canvas is positioned ``absolute`` and takes the size of its parent.
-### `Config`
-key | option type | default | Comment
----|-----------|---|---
-`starsCount` | `number` | `350` | Recommended: < `1000`
-`starsColor` | `string` | `#ffffff`
-`starsRotationSpeed` | `number` | `3`
-`cometFrequence` | `number` | `15` | `0` disables the comets
-`nebulasIntensity` | `number` | `10`
-`sunScale` | `number` | `1` | `0` hides the Sun
-`planetsScale` | `number` | `1` | `0` hides the planets
-`solarSystemOrbite` | `number` | `65` |  Recommended: < `100`
-`solarSystemSpeedOrbit` | `number` | `100`
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
